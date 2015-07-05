@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#banner {
+    position: relative;
+    z-index: 1;
+}
+
+#logo {
+    float: left;
+    margin: 7px 0 7px 60px;
+}
+
+#contact {
+    float: left;
+    height: 190px;
+    padding: 18px 3%;
+}
+
+#contact p {
+    padding: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #999999;
+}
+
+#contact p:target{
+    color: red;
+}
+
+#map-canvas {
+    position: absolute;
+    width: 100%;
+    height: 190px;
+    z-index: 0;
+}
+
+/* Dynamic elements */
+
+#header {
+    position: absolute;
+    top: -190px;
+    height: 190px;
+    width: 100%;
+    background-color: #eee;
+    transition: top 1s;
+}
+
+#prof:target ~ #header, #part:target ~ #header {
+    top: 0px;
+}
+

@@ -1,23 +1,39 @@
----
-layout: default
----
-
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Multiprofils - Accueil</title>
+    <meta name="description" content="Multiprofil - Multiservices, services multiples. Professionnels et particuliers.">
+    <link rel="stylesheet" href="main.css">
+    <!-- Embedde map -->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="map.js"></script>
+  </head>
+  <body>
+    <div id="prof">
+      <a href="#prof">
+	<h1>Professionnels</h1>
+      </a>
+    </div>
+    <div id="part">
+      <a href="#part">
+	<h1>Particuliers</h1>
+      </a>
+    </div>
+    <!-- The header is shown below because the ~ css selector
+	 can not select backward -->
+    <div id="header">
+      <div id="banner">
+	<a id="logo" href="#">
+	  <img src="img/logo.png">
+	</a>
+	<div id="contact">
+	  <p>DEVIS GRATUITS</p>
+	  <p>LE CHAMP BLANC<br/>35580 GOVEN</p>
+	  <p>06.47.12.40.94</p>
+	</div>
+      </div>
+      <div id="map-canvas"></div>
+    </div>
+  </body>
+</html>
