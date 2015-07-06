@@ -187,6 +187,25 @@ body {
     opacity: 1;
 }
 
+/* FOOTER */
+
+#footer {
+    transition: all 1s;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 40px;
+    border-bottom: solid 2px #f06;
+}
+
+#footer img {
+    float: right;
+}	     
+
+#prof:target ~ #footer, #part:target ~ #footer {
+    bottom: -50px;
+}
+
 /* GENERAL */
 
 /* but hide everything else */
