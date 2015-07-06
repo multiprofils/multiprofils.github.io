@@ -211,10 +211,11 @@ body {
 
 /* but hide everything else */
 #prof:target ~ .part {
-    transition: all 1s;
+    z-index: 0;
     opacity: 0;
 }
 
 #part:target ~ .prof {
+    z-index: 0;
     opacity: 0;
 }
