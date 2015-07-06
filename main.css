@@ -5,7 +5,7 @@ body {
 
 #banner {
     position: relative;
-    z-index: 1;
+    z-index: 3;
 }
 
 #logo {
@@ -27,18 +27,20 @@ body {
     background-color: #999999;
 }
 
-#contact p:target{
-    color: red;
-}
-
 #map-canvas {
     position: absolute;
     width: 100%;
     height: 190px;
-    z-index: 0;
+    z-index: 2;
+}
+
+body {
+    overflow: hidden;
 }
 
 /* Dynamic elements */
+
+/* HEADER */
 
 #header {
     position: absolute;
@@ -49,7 +51,150 @@ body {
     transition: top 1s;
 }
 
+/* Displaying the header only when some section is selected */
 #prof:target ~ #header, #part:target ~ #header {
     top: 0px;
 }
 
+/* BACKGROUND */
+
+/* prof */
+
+.prof.background {
+    z-index: 1;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    border-radius: 50%;
+    width: 350px;
+    height: 350px;
+    background-color: rgba(153, 153, 153, 1);
+    transition: all 1s;
+}
+
+/* part */
+
+.part.background {
+    z-index: 1;
+    position: absolute;
+    left: 550px;
+    top: 100px;
+    border-radius: 50%;
+    width: 350px;
+    height: 350px;
+    background-color: rgba(153, 153, 153, 1);
+    transition: all 1s;
+}
+
+/* both */
+
+#prof:target ~ .prof.background, #part:target ~ .part.background {
+    z-index: 0;
+    top: -600px;
+    left: -200px;
+    width: 2000px;
+    height: 2000px;
+    background: rgba(153, 0, 153, 0);
+}
+
+/* TITLE */
+
+/* prof */
+
+.prof.title.nb1 {
+    z-index: 2;
+    position: absolute;
+    left: 185px;
+    top: 220px;
+    transition:all 1s;
+}
+
+.prof.title.nb2 {
+    z-index: 2;
+    position: absolute;
+    left: 130px;
+    top: 270px;
+    transition:all 1s;
+}
+
+#prof:target ~ .prof.title.nb2 {
+    left: 220px;
+    top: 200px;
+}
+
+/* part */
+
+.part.title.nb1 {
+    z-index: 2;
+    position: absolute;
+    left: 620px;
+    top: 220px;
+    transition:all 1s;
+}
+
+.part.title.nb2 {
+    z-index: 2;
+    position: absolute;
+    left: 610px;
+    top: 270px;
+    transition:all 1s;
+}
+
+#part:target ~ .part.title.nb2 {
+    left: 255px;
+    top: 200px;
+}
+
+/* both */
+
+.title {
+    transition: all 1s;
+    font-size: 35px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+
+#prof:target ~ .title, #part:target ~ .title {
+    color: rgba(153, 153, 153, 1);
+}
+
+#prof:target ~ .prof.title.nb1, #part:target ~ .part.title.nb1 {
+    left: 40px;
+    top: 200px;
+    background: rgba(153, 153, 153, 0);
+}
+
+/* CONTENT */
+
+/* reveal content while selected*/
+.content {
+    z-index: 0;
+    margin: 0 40px;
+    position: absolute;
+    transition: all 1s;
+    top: 150px;
+    bottom: 0px;
+    overflow: auto;
+    opacity: 0;
+}
+
+#prof:target ~ .prof.content, #part:target ~ .part.content {
+    z-index: 1;
+    position: absolute;
+    transition: all 1s;
+    top: 250px;
+    opacity: 1;
+}
+
+/* GENERAL */
+
+/* but hide everything else */
+#prof:target ~ .part {
+    transition: all 1s;
+    opacity: 0;
+}
+
+#part:target ~ .prof {
+    opacity: 0;
+}

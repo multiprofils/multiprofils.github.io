@@ -22,7 +22,7 @@ function initialize() {
 	    featureType: 'landscape',
 	    elementType: 'geometry',
 	    stylers: [
-		{ color: '#eeeeee' }
+		{ color: '#ffffff' }
 	    ]
 	}
     ]);
@@ -30,7 +30,6 @@ function initialize() {
 	position: new google.maps.LatLng(48.036833, -1.819001),
 	map: map,
 	icon: 'img/map_icon.png',
-	animation: google.maps.Animation.DROP
 });
 }
 
