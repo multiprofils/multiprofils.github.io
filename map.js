@@ -10,27 +10,52 @@ function initialize() {
 	disableDefaultUI: true
     }
     var map = new google.maps.Map(mapCanvas, mapOptions)
-    map.set('styles', [
+    map.set('styles',[
 	{
-	    featureType: 'road',
-	    elementType: 'geometry.stroke',
-	    stylers: [
-		{ color: '#ff0066' },
-		{ weight: 0.3 }
-	    ]
+	    "featureType": "road.highway",
+	    "elementType": "geometry",
+	    "stylers": [
+		{"color": "#ff0066"},
+		{"visibility": "simplified"}]
 	}, {
-	    featureType: 'landscape',
-	    elementType: 'geometry',
-	    stylers: [
-		{ color: '#ffffff' }
-	    ]
+	    "featureType": "road",
+	    "elementType": "labels",
+	    "stylers": [{"hue": "#ff0066"}]
+	}, {
+	    "featureType": "landscape",
+	    "stylers": [{"color": "#ffffff"}]
+	}, {
+	    "featureType": "poi",
+	    "stylers": [{"visibility": "off"}]
+	}, {
+	    "featureType": "road.arterial",
+	    "elementType": "geometry",
+	    "stylers": [
+		{"color": "#999999"},
+		{"visibility": "simplified"}]
+	}, {
+	    "featureType": "road.local",
+	    "elementType": "geometry",
+	    "stylers": [
+		{"visibility": "simplified"},
+		{"color": "#bbbbbb"}]
+	}, {
+	    "featureType": "water",
+	    "stylers": [{ "hue": "#ff0066" }]
+	}, {
+	    "featureType": "administrative",
+	    "elementType": "labels",
+	    "stylers": [
+		{"visibility": "simplified"},
+		{"color": "#999999"}]
 	}
     ]);
     var marker = new google.maps.Marker({
-	position: new google.maps.LatLng(48.036833, -1.819001),
 	map: map,
+	animation: google.maps.Animation.DROP,
+	position: new google.maps.LatLng(48.036833, -1.819001),
 	icon: 'img/map_icon.png',
-});
+    });
 }
 
 
