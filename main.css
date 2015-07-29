@@ -4,9 +4,37 @@ body {
     font-family: sans-serif;
 }
 
-#banner {
-    position: relative;
+body {
+    overflow: hidden;
+}
+
+
+/* MAP CANVAS */
+
+#map-canvas {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 1s;
+}
+
+#prof:target ~ #map-canvas,
+#part:target ~ #map-canvas {
+    top: calc(-50% + 100px);
+}
+
+
+/* HEADER */
+
+#header {
     z-index: 3;
+    position: absolute;
+    height: 190px;
+    width: 100%;
+    top: -250px;
+    transition: all 1s;
 }
 
 #logo {
@@ -28,169 +56,97 @@ body {
     background-color: #999999;
 }
 
-#map-canvas {
+#back {
     position: absolute;
-    width: 100%;
-    height: 190px;
-    z-index: 2;
-}
-
-body {
-    overflow: hidden;
-}
-
-/* Dynamic elements */
-
-/* HEADER */
-
-#header {
-    position: absolute;
-    top: -190px;
-    height: 190px;
-    width: 100%;
-    background-color: #eee;
-    transition: top 1s;
-}
-
-/* Displaying the header only when some section is selected */
-#prof:target ~ #header, #part:target ~ #header {
-    top: 0px;
-}
-
-/* BACKGROUND */
-
-/* prof */
-
-.prof.background {
-    z-index: 1;
-    position: absolute;
-    left: 100px;
-    top: 100px;
-    border-radius: 50%;
-    width: 350px;
-    height: 350px;
-    background-color: rgba(153, 153, 153, 1);
-    transition: all 1s;
-}
-
-/* part */
-
-.part.background {
-    z-index: 1;
-    position: absolute;
-    left: 550px;
-    top: 100px;
-    border-radius: 50%;
-    width: 350px;
-    height: 350px;
-    background-color: rgba(153, 153, 153, 1);
-    transition: all 1s;
+    left: 40px;
+    top: 210px;
 }
 
 /* both */
 
-#prof:target ~ .prof.background, #part:target ~ .part.background {
-    z-index: 0;
-    top: -600px;
-    left: -200px;
-    width: 2000px;
-    height: 2000px;
-    background: rgba(153, 0, 153, 0);
+#prof:target ~ #header,
+#part:target ~ #header {
+    top: 0px;
 }
+
 
 /* TITLE */
 
 /* prof */
 
-.prof.title.nb1 {
-    z-index: 2;
+.prof.title {
+    z-index: 3;
     position: absolute;
-    left: 185px;
-    top: 220px;
-    transition:all 1s;
-}
-
-.prof.title.nb2 {
-    z-index: 2;
-    position: absolute;
-    left: 130px;
-    top: 270px;
-    transition:all 1s;
-}
-
-#prof:target ~ .prof.title.nb2 {
-    left: 220px;
-    top: 200px;
+    top: 250px;
+    transition: all 1s;
 }
 
 /* part */
 
-.part.title.nb1 {
-    z-index: 2;
+.part.title {
+    z-index: 3;
     position: absolute;
-    left: 620px;
-    top: 220px;
+    top: 350px;
     transition:all 1s;
-}
-
-.part.title.nb2 {
-    z-index: 2;
-    position: absolute;
-    left: 610px;
-    top: 270px;
-    transition:all 1s;
-}
-
-#part:target ~ .part.title.nb2 {
-    left: 255px;
-    top: 200px;
 }
 
 /* both */
 
 .title {
-    transition: all 1s;
+    left: 150px;
     font-size: 35px;
     font-weight: bold;
     text-decoration: none;
-    color: rgba(255, 255, 255, 1);
+    color: #999;
+    text-shadow:
+    0px 0px 55px #fff,
+    0px 0px 50px #fff,
+    0px 0px 45px #fff,
+    0px 0px 40px #fff,
+    0px 0px 35px #fff,
+    0px 0px 30px #fff,
+    0px 0px 25px #fff,
+    0px 0px 20px #fff,
+    0px 0px 15px #fff,
+    0px 0px 5px #fff;
+    opacity: 1;
+    transition: all 1s;
 }
 
-#prof:target ~ .title, #part:target ~ .title {
-    color: rgba(153, 153, 153, 1);
+.title:hover {
+    text-shadow: 0px 0px 10px #f06;
 }
 
-#prof:target ~ .prof.title.nb1, #part:target ~ .part.title.nb1 {
-    left: 40px;
+#prof:target ~ #content .prof.title, #part:target ~ #content .part.title {
     top: 200px;
-    background: rgba(153, 153, 153, 0);
 }
+
 
 /* CONTENT */
 
 /* reveal content while selected*/
 .content {
-    z-index: 0;
-    margin: 0 40px;
+    z-index: 2;
+    padding: 70px 50px;
     position: absolute;
-    transition: all 1s;
-    top: 150px;
+    top: 100%;
     bottom: 0px;
     overflow: auto;
-    opacity: 0;
+    background: white;
+    transition: all 1s;
 }
 
-#prof:target ~ .prof.content, #part:target ~ .part.content {
-    z-index: 1;
-    position: absolute;
-    transition: all 1s;
-    top: 250px;
-    opacity: 1;
+#prof:target ~ #content .prof.content,
+#part:target ~ #content .part.content {
+    z-index: 2;
+    top: 190px;
 }
+
 
 /* FOOTER */
 
 #footer {
+    z-index: 2;
     transition: all 1s;
     position: absolute;
     bottom: 20px;
@@ -201,21 +157,19 @@ body {
 
 #footer img {
     float: right;
-}	     
+}
 
-#prof:target ~ #footer, #part:target ~ #footer {
+#prof:target ~ #footer,
+#part:target ~ #footer {
     bottom: -50px;
 }
 
+
 /* GENERAL */
 
-/* but hide everything else */
-#prof:target ~ .part {
-    z-index: 0;
-    opacity: 0;
-}
-
-#part:target ~ .prof {
+/* hide everything else */
+#prof:target ~ #content .part,
+#part:target ~ #content .prof {
     z-index: 0;
     opacity: 0;
 }
